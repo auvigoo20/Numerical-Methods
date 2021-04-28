@@ -1,0 +1,2 @@
+function [h, Error] = trapezoidErrorGraph()    %start interval  a = 0;    %end interval  b = pi;    Error = [];  h = [];        %number of subintervals  m1 = 1;  m2 = 2;    for i = 1 : 20      h1 = (b-a) ./ m1;  h2 = (b-a) ./ m2;    Ih1 = compTrapezoid(m1);    Ih2 = compTrapezoid(m2);     Error = [ Error;  abs( (Ih2 - Ih1) ./ ((h1./h2).^2 - 1) ) ];  h = [h; h2];    m1 = m2;  m2 = m2 * 2;    endfor    scatter(h, Error);  set(gca,'xscale','log');  set(gca,'yscale','log');      
+endfunction

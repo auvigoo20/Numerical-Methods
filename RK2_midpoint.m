@@ -1,0 +1,1 @@
+function [t, w] = RK2_midpoint(to, yo, h, n)    func = @(t,y) 5*t.^4*y;    w = [yo];  t = [to];    for i=1 : n    k1 = func(t(i), w(i));    k2 = func( t(i)+h/2, w(i)+h/2*k1);    w = [w; w(i) + h*k2];    t = [t; t(i) + h];  endfor    endfunction
